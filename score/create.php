@@ -35,18 +35,6 @@ if (
     $score->id_level = $data->id_level;
     $score->created = date('Y-m-d H:i:s');
 
-    // $lastScore = new Score($db);
-    // $lastScore->device = $data->device;
-    // $lastScore->readOneDevice();
-
-    // if (isset($lastScore->score) && $lastScore->score >> $score->score) {
-    //     // set response code - 406 not acceptable
-    //     http_response_code(406);
-
-    //     // tell the user
-    //     echo json_encode(array("message" => "You have already set a better score on this device."));
-    // } else {
-    // create the score
     if ($score->create()) {
 
         // set response code - 201 created
