@@ -78,7 +78,7 @@ class Score
         // prepare query statement
         $stmt = $this->conn->prepare($query);
 
-        // bind id of product to be updated
+        // bind id of score to be listed
         $stmt->bindParam(1, $this->id);
 
         // execute query
@@ -88,34 +88,6 @@ class Score
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // set values to object properties
-        $this->name = $row['name'];
-        $this->device = $row['device'];
-        $this->score = $row['score'];
-        $this->id_level = $row['id_level'];
-        $this->created = $row['created'];
-    }
-
-    // read one score by device
-    function readOneDevice()
-    {
-
-        // query to read single record
-        $query = "SELECT s.id, s.name, s.device, s.score, s.id_level, s.created FROM " . $this->table_name . " s WHERE s.device = ?";
-
-        // prepare query statement
-        $stmt = $this->conn->prepare($query);
-
-        // bind device of product to be updated
-        $stmt->bindParam(1, $this->device);
-
-        // execute query
-        $stmt->execute();
-
-        // get retrieved row
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // set values to object properties
-        $this->id = $row['id'];
         $this->name = $row['name'];
         $this->device = $row['device'];
         $this->score = $row['score'];

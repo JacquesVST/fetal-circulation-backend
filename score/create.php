@@ -35,37 +35,35 @@ if (
     $score->id_level = $data->id_level;
     $score->created = date('Y-m-d H:i:s');
 
-    $lastScore = new Score($db);
-    $lastScore->device = $data->device;
-    $lastScore->readOneDevice();
+    // $lastScore = new Score($db);
+    // $lastScore->device = $data->device;
+    // $lastScore->readOneDevice();
 
-    if ($lastScore->score < $score->score) {
+    // if (isset($lastScore->score) && $lastScore->score >> $score->score) {
+    //     // set response code - 406 not acceptable
+    //     http_response_code(406);
 
-        // create the score
-        if ($score->create()) {
+    //     // tell the user
+    //     echo json_encode(array("message" => "You have already set a better score on this device."));
+    // } else {
+    // create the score
+    if ($score->create()) {
 
-            // set response code - 201 created
-            http_response_code(201);
-
-            // tell the user
-            echo json_encode(array("message" => "Score was sent."));
-        }
-
-        // if unable to create the product, tell the user
-        else {
-
-            // set response code - 503 service unavailable
-            http_response_code(503);
-
-            // tell the user
-            echo json_encode(array("message" => "Unable to send score."));
-        }
-    } else {
-        // set response code - 406 not acceptable
-        http_response_code(406);
+        // set response code - 201 created
+        http_response_code(201);
 
         // tell the user
-        echo json_encode(array("message" => "You have already set a better score on this device."));
+        echo json_encode(array("message" => "Score was sent."));
+    }
+
+    // if unable to create the product, tell the user
+    else {
+
+        // set response code - 503 service unavailable
+        http_response_code(503);
+
+        // tell the user
+        echo json_encode(array("message" => "Unable to send score."));
     }
 }
 
