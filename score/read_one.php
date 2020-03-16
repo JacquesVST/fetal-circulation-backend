@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 // include database and object files
 include_once '../config/database.php';
 include_once '../objects/score.php';
-  
+
 // get database connection
 $database = new Database();
 $db = $database->getConnection();

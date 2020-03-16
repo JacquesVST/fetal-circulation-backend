@@ -68,12 +68,12 @@ class Score
         return false;
     }
 
-    // read one score dy ID
+    // read one score by ID
     function readOne()
     {
 
         // query to read single record
-        $query = "SELECT s.id, s.name, s.device, s.score, s.id_level, s.created FROM " . $this->table_name . " s WHERE s.id = ?";
+        $query = "SELECT s.id, s.name, s.device, s.score, s.id_level, s.created FROM " . $this->table_name . " s WHERE s.device = ? ORDER BY s.score DESC";
 
         // prepare query statement
         $stmt = $this->conn->prepare($query);
@@ -93,5 +93,24 @@ class Score
         $this->score = $row['score'];
         $this->id_level = $row['id_level'];
         $this->created = $row['created'];
+    }
+
+    // read scores by Device
+    function readAllDevice()
+    {
+
+        // query to read single record
+        $query = "SELECT s.id, s.name, s.device, s.score, s.id_level, s.created FROM " . $this->table_name . " s WHERE s.device = ?";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // bind id of score to be listed
+        $stmt->bindParam(1, $this->device);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
     }
 }
