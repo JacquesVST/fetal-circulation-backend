@@ -113,4 +113,20 @@ class Score
 
         return $stmt;
     }
+
+    // read scores, one by Device
+    function readAllUnique()
+    {
+
+        // select all query
+        $query = "SELECT s.id, s.name, s.device, s.score, s.id_level, s.created FROM " . $this->table_name . " s ORDER BY s.score DESC";
+
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+
+        // execute query
+        $stmt->execute();
+
+        return $stmt;
+    }
 }
