@@ -46,27 +46,15 @@ if ($num > 0) {
         array_push($scores_arr["scores"], $score_item);
     }
     
-    $unique_devices_arr = [];
-    $score_by_device_arr = [];
-    $unique_scores_arr = [];
-    foreach ($scores_arr as $value) {
-        if(!in_array($value->device, $unique_devices_arr)){
-            $unique_devices_arr->array_push($value->device)
+    $unique_devices_arr = array();
+    $unique_scores_arr = array();
+    $unique_scores_arr["scores"] = array();
+
+    foreach ($scores_arr["scores"] as $value) {
+        if(!in_array($value["device"], $unique_devices_arr)){
+            array_push($unique_devices_arr, $value["device"]);
+            array_push($unique_scores_arr["scores"], $value);
         }
-    }
-    foreach ($unique_devices_arr as $device) {
-        $cont = 0;
-        $score_by_device_arr[cont] = [];
-        foreach ($scores_arr as $value) {
-            if ($value->device == $device){
-                $score_by_device_arr[cont]->array_push($value);
-            }
-        }
-        usort($core_by_device_arr[cont], fn($a, $b) => strcmp($a->score, $b->score));
-        $cont++;
-    }
-    foreach ($core_by_device_arr as $device_scores) {
-        $unique_scores_arr->array_push = $device_scores[1];
     }
 
     // set response code - 200 OK
