@@ -38,6 +38,7 @@ if ($num > 0) {
             "id" => $id,
             "name" => $name,
             "device" => $device,
+            "email" => $email,
             "score" => $score,
             "id_level" => $id_level,
             "created" => $created
@@ -46,13 +47,13 @@ if ($num > 0) {
         array_push($scores_arr["scores"], $score_item);
     }
     
-    $unique_devices_arr = array();
+    $unique_emails_arr = array();
     $unique_scores_arr = array();
     $unique_scores_arr["scores"] = array();
 
     foreach ($scores_arr["scores"] as $value) {
-        if(!in_array($value["device"], $unique_devices_arr)){
-            array_push($unique_devices_arr, $value["device"]);
+        if(!in_array($value["email"], $unique_emails_arr)){
+            array_push($unique_emails_arr, $value["device"]);
             array_push($unique_scores_arr["scores"], $value);
         }
     }

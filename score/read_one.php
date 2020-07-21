@@ -29,6 +29,7 @@ if($score->name!=null){
         "id" =>  $score->id,
         "name" => $score->name,
         "device" => $score->device,
+        "email" => $score->email,
         "score" => $score->score,
         "id_level" => $score->id_level,
         "created" => $score->created

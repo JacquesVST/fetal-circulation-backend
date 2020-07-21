@@ -18,10 +18,10 @@ $db = $database->getConnection();
 $score = new Score($db);
 
 // set ID property of record to read
-$score->device = isset($_GET['device']) ? $_GET['device'] : die();
+$score->email = isset($_GET['email']) ? $_GET['email'] : die();
 
 // query scores
-$stmt = $score->readAllDevice();
+$stmt = $score->readAllEmail();
 $num = $stmt->rowCount();
 
 // check if more than 0 record found
@@ -44,6 +44,7 @@ if ($num > 0) {
             "id" => $id,
             "name" => $name,
             "device" => $device,
+            "email" => $email,
             "score" => $score,
             "id_level" => $id_level,
             "created" => $created
@@ -64,6 +65,6 @@ if ($num > 0) {
 
     // tell the user no scores found
     echo json_encode(
-        array("message" => "No scores found. ". $num. " found for ". $score->device.".")
+        array("message" => "No scores found. ". $num. " found for ". $score->email.".")
     );
 }

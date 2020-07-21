@@ -24,6 +24,7 @@ $data = json_decode(file_get_contents("php://input"));
 if (
     !empty($data->name) &&
     !empty($data->device) &&
+    !empty($data->email) &&
     !empty($data->score) &&
     !empty($data->id_level)
 ) {
@@ -31,6 +32,7 @@ if (
     // set score property values
     $score->name = trim($data->name);
     $score->device = $data->device;
+    $score->email = trim($data->email);
     $score->score = $data->score;
     $score->id_level = $data->id_level;
     $score->created = date('Y-m-d H:i:s');

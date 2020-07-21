@@ -38,6 +38,7 @@ if ($num > 0) {
             "id" => $id,
             "name" => $name,
             "device" => $device,
+            "email" => $email,
             "score" => $score,
             "id_level" => $id_level,
             "created" => $created
